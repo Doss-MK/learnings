@@ -1,1 +1,28 @@
 <div id="root"></div>
+<table class="table table-bordered mx-auto w-50 mt-5 table-light">
+    <thead>
+        <tr>
+            <th class="bg-secondary text-light">S.No</th>
+            <th class="bg-secondary text-light">Concept</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><%= link_to 'Okta SSO', sso_okta_home_index_url %> </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><%= link_to 'AWS S3', aws_s3_profile_index_url %> </td>
+            
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><%= link_to 'Multiple Database', multiple_db_primary_index_url %> </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><%= link_to 'i18n', i18n_home_index_url %> </td>
+        </tr>
+    </tbody>
+</table>

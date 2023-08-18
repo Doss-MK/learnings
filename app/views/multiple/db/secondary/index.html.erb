@@ -1,0 +1,18 @@
+<table class="table table-bordered mx-auto mt-5 w-50">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @students.each do |student_info| %>
+            <tr>
+                <td><%= student_info.id %></td>
+                <td><%= student_info.name %></td>
+                <td><%= student_info.age %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

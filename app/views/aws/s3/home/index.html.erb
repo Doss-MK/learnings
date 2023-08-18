@@ -1,0 +1,29 @@
+<div class="container mx-auto mt-5 w-50 bg-light p-5">
+    <%= form_with class: 'form-control p-5 rounded-0' ,model: @profile, url: aws_s3_profile_index_url, method: 'POST', multipart: true do |form| %>
+        <div class="alert alert-success <%= notice.present? ? 'd-block' : 'd-none' %>"> <%= notice %> </div>
+        <h4 class="text-center mb-4">File Upload Using AWS S3</h4>
+        <%= form.file_field :avatar, class: 'form-control rounded-0' %>
+        <%= form.submit class: 'btn btn-primary mt-2 rounded-0'%>
+    <% end %>
+</div>
+
+<table class="table table-bordered mx-auto mt-3 w-50">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>File Name</th>
+            <th>Preview</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% @profiles.each do |profile_info| %>
+            <tr class="w-100">
+                <td class="w-33"> <%= profile_info.id %> </td>
+                <td class="w-33"> <%= profile_info.file_name %> </td>
+                <td class="w-33"> <%= image_tag profile_info.avatar_url, class: 'img-thumbnail', width: '100px', height: '50px', alt: profile_info.file_name %> </td>            
+            </tr>
+        <% end %>
+    </tbody>
+</table>
