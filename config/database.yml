@@ -24,14 +24,14 @@ default: &default
 development:
   primary:
     adapter: postgresql
-    host: postgres 
+    host: localhost
     port: 5432
     username: postgres
     password: password
     database: sample_primary
   primary_replica:
     adapter: postgresql
-    host: postgres 
+    host: localhost
     port: 5432
     username: postgres
     password: password
@@ -39,7 +39,7 @@ development:
     replica: true
   secondary:
     adapter: postgresql
-    host: postgres 
+    host: localhost
     port: 5432
     username: postgres
     password: password
@@ -47,7 +47,7 @@ development:
     migrations_paths: db/secondary_migrate
   secondary_replica:
     adapter: postgresql
-    host: postgres 
+    host: localhost
     port: 5432
     username: postgres
     password: password

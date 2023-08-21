@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :fw do
+    namespace :react do
+      get "*path", to: "home#index"
+    end
+  end
   namespace :aws do
     namespace :s3 do
       resources :profile, controller: 'home'
@@ -25,4 +30,5 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+  
 end

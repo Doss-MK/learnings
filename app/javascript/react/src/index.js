@@ -1,1 +1,1 @@
-import Welcome from "./components/Welcome";
+import App from "./components/App";
