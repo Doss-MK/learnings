@@ -18,6 +18,7 @@ gem "aws-sdk-s3", require: false
 gem "pg", "~> 1.1"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
+gem 'rack-cors'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

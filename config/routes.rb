@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do 
+    namespace :v1 do 
+      resources :users
+    end
+  end
+
   root 'home#index'
   
 end
