@@ -1,0 +1,2 @@
+class RegularAdmin < Admin
+end

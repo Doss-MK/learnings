@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_18_134142) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_22_131643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_134142) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.text "email"
+    t.boolean "is_super_admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "developers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.bigint "manager_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_developers_on_manager_id"
+  end
+
+  create_table "developers_projects", id: false, force: :cascade do |t|
+    t.bigint "developer_id", null: false
+    t.bigint "project_id", null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -49,6 +80,43 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_134142) do
     t.string "first_name"
     t.string "last_name"
     t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "file"
+    t.integer "imageable_id"
+    t.string "imageable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "managers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "manger_histories", force: :cascade do |t|
+    t.string "exp"
+    t.bigint "manager_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_manger_histories_on_manager_id"
+  end
+
+  create_table "parents", force: :cascade do |t|
+    t.string "fname"
+    t.string "mname"
+    t.bigint "developer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_parents_on_developer_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +129,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_134142) do
     t.text "file_name"
   end
 
+  create_table "project_submissions", force: :cascade do |t|
+    t.date "submission_date"
+    t.bigint "developer_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_project_submissions_on_developer_id"
+    t.index ["project_id"], name: "index_project_submissions_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "email"
@@ -70,4 +154,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_134142) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "developers", "managers"
+  add_foreign_key "manger_histories", "managers"
+  add_foreign_key "parents", "developers"
+  add_foreign_key "project_submissions", "developers"
+  add_foreign_key "project_submissions", "projects"
 end
