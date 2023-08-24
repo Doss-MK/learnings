@@ -14,6 +14,8 @@ import Profile from "../pages/Profile";
 import Cake from "../pages/Cake";
 import IceCream from "../pages/IceCream";
 import Hook from "../pages/Hook";
+import Antd from "../pages/Antd";
+import Material from "../pages/Material";
 
 const store = configureStore({
     reducer: {
@@ -36,6 +38,8 @@ const App = () => {
                     <Route path="/fw/react/cake" element={<Cake />} />
                     <Route path="/fw/react/ice-cream" element={<IceCream />} />
                     <Route path="/fw/react/hooks" element={<Hook />} />
+                    <Route path="/fw/react/antd" element={<Antd />} />
+                    <Route path="/fw/react/material" element={<Material />} />
                 </Routes>
             </BrowserRouter>
         </div>
