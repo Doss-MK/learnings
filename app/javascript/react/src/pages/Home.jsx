@@ -20,6 +20,22 @@ function Home() {
             <td>2</td>
             <td><Link to="/fw/react/admin">Admin Redux Login</Link></td>
           </tr>
+          <tr>
+            <td>3</td>
+            <td><Link to="/fw/react/profile">Admin Profile</Link></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><Link to="/fw/react/cake">Cake</Link></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><Link to="/fw/react/ice-cream">IceCream</Link></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><Link to="/fw/react/hooks">Hooks</Link></td>
+          </tr>
         </tbody>
       </table>
     </div>
