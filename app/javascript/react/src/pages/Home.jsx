@@ -44,6 +44,10 @@ function Home() {
             <td>8</td>
             <td><Link to="/fw/react/material">Material</Link></td>
           </tr>
+          <tr>
+            <td>9</td>
+            <td><Link to="/fw/react/stripe">Stripe</Link></td>
+          </tr>
         </tbody>
       </table>
     </div>

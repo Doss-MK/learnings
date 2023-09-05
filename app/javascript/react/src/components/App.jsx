@@ -16,6 +16,7 @@ import IceCream from "../pages/IceCream";
 import Hook from "../pages/Hook";
 import Antd from "../pages/Antd";
 import Material from "../pages/Material";
+import Stripe from "../pages/Stripe";
 
 const store = configureStore({
     reducer: {
@@ -40,6 +41,7 @@ const App = () => {
                     <Route path="/fw/react/hooks" element={<Hook />} />
                     <Route path="/fw/react/antd" element={<Antd />} />
                     <Route path="/fw/react/material" element={<Material />} />
+                    <Route path="/fw/react/stripe" element={<Stripe />} />
                 </Routes>
             </BrowserRouter>
         </div>

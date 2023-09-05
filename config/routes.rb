@@ -32,6 +32,14 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       resources :users
+
+      post 'stripe/generate_connect_url'
+      post 'stripe/create_customer'
+      get 'stripe/get_connected_accounts'
+      get 'stripe/success'
+      get 'stripe/refresh'
+      get 'stripe/get_all_customers'
+      post 'stripe/amount_transfer'
     end
   end
 
